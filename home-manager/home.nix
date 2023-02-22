@@ -2,7 +2,6 @@
 
 let 
   b = pkgs.callPackage ./src/b {};
-  pkgs = import <nixpkgs> {};
   LS_COLORS = pkgs.fetchgit {
     url = "https://github.com/trapd00r/LS_COLORS";
     rev = "09dab448207002624d17f01ed7cbf820aa048063";
@@ -70,7 +69,6 @@ in
       plugins = with pkgs.vimPlugins; [ 
         # language support
         vim-nix
-        nix-develop-nvim
         rust-vim
         vim-toml
 

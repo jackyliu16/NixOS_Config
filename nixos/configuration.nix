@@ -10,9 +10,9 @@
       ./hardware-configuration.nix
     ];
   nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
-	nix.extraOptions = ''
-		experimental-features = nix-command flakes
-	'';
+  nix.extraOptions = ''
+    experimental-features = nix-command flakes
+  '';
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
