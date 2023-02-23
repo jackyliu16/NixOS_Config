@@ -124,18 +124,6 @@ in
       '';
       # .zshrc
       # initExtra   
-      initExtra = ''
-        source ./p10k-instant-prompt-jacky.zsh
-      '';
-      oh-my-zsh = {
-        enable = true;
-      };
-      zplug = {
-        enable = true;
-        plugins = [
-          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
-        ];
-      };
     };
   };
 }
