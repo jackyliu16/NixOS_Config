@@ -37,6 +37,7 @@ in
   home.packages = [
     pkgs.git
     pkgs.ripgrep
+    pkgs.tmux
     pkgs.tree
     pkgs.jq
     pkgs.fzf    # everything
@@ -113,12 +114,28 @@ in
       shellAliases = {
         ll = "ls -l";
         # ".." = "cd ..";
+        "hws" = "home-manager switch --flake ~/Documents/nix-config/";
       };
       # shellGlobalAliases = '''';
       # .zshenv
-      # envExtra = '''';
+      envExtra = ''
+        export http_proxy=127.0.0.1:7890
+        export https_proxy=127.0.0.1:7890
+      '';
       # .zshrc
       # initExtra   
+      initExtra = ''
+        source ./p10k-instant-prompt-jacky.zsh
+      '';
+      oh-my-zsh = {
+        enable = true;
+      };
+      zplug = {
+        enable = true;
+        plugins = [
+          { name = "romkatv/powerlevel10k"; tags = [ as:theme depth:1 ]; }
+        ];
+      };
     };
   };
 }
