@@ -94,11 +94,31 @@ in
     };
   };
 
-  programs.bat = {
-    enable = true;
-    config = {
-      # theme = "ansi-dark";
-      theme = "base16-256";
+
+  # terminal 
+  programs = {
+    bat = {
+      enable = true;
+      config = {
+        # theme = "ansi-dark";
+        theme = "base16-256";
+      };
+    };
+    zsh = {
+      enable = true;
+      enableAutosuggestions = true;
+      enableSyntaxHighlighting = true;
+      autocd = true;
+      defaultKeymap = "vicmd";
+      shellAliases = {
+        ll = "ls -l";
+        # ".." = "cd ..";
+      };
+      # shellGlobalAliases = '''';
+      # .zshenv
+      # envExtra = '''';
+      # .zshrc
+      # initExtra   
     };
   };
 }
