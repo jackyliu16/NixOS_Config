@@ -20,6 +20,12 @@
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
+  boot.loader.systemd-boot.extraEntries = {
+    "UbuntuKylin.conf" = ''
+      title Ubuntukylin
+      efi /efi/ubuntu/shimx64.efi
+    '';
+  };
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
 
