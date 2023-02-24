@@ -9,10 +9,13 @@
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
     ];
-  nix.settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
-  nix.extraOptions = ''
-    experimental-features = nix-command flakes
-  '';
+  nix = {
+    settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
+    package = pkgs.nixFlakes;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+  };
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -84,6 +87,7 @@
   # services.xserver.libinput.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
+  users.defaultUserShell = pkgs.zsh;
   users.users.jacky = {
     isNormalUser = true;
     description = "jacky";
@@ -98,10 +102,19 @@
   nixpkgs.config.allowUnfree = true;
 
   # List packages installed in system profile. To search, run:
-  environment.systemPackages = with pkgs; [
-    vim 
-    wget
-  ];
+  environment = {
+    shells = [ pkgs.zsh ];
+    shellAliases = {
+      ll="ls -l";
+      hws="home-manager switch --flake .";
+      nixs="sudo nixos-rebuild switch --flake .#nixos";
+    };
+    systemPackages = with pkgs; [
+      vim 
+      wget
+    ];
+  };
+
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
