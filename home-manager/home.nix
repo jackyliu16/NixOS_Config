@@ -116,6 +116,7 @@ in
 
       shellAliases = {
         hws="home-manager switch --flake . --option substituters 'https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store'";
+        nixs="sudo nixos-rebuild switch --flake .#nixos  --option substituters 'https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store'";
       };
 
       oh-my-zsh.enable = true;
