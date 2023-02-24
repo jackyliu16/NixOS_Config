@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ./fonts.nix
     ];
   nix = {
     settings.substituters = [ "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store" ];
@@ -48,6 +49,15 @@
     LC_PAPER = "zh_CN.UTF-8";
     LC_TELEPHONE = "zh_CN.UTF-8";
     LC_TIME = "zh_CN.UTF-8";
+  };
+
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.enableRimeData = true;
+    fcitx5.addons = with pkgs; [
+      fcitx5-rime
+      fcitx5-chinese-addons
+    ];
   };
 
   # Enable the X11 windowing system.

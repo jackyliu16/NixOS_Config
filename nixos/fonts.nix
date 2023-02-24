@@ -9,7 +9,12 @@
       noto-fonts
       noto-fonts-cjk
       noto-fonts-emoji
-      nerdfonts
+      source-han-sans
+      source-han-serif
+      source-code-pro
+      hack-font
+      jetbrains-mono
+      # nerdfonts
       twemoji-color-font
     ];
     fontconfig = {
@@ -244,5 +249,4 @@
       '';
     };
   };
-
 }
